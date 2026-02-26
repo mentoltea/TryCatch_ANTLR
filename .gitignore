@@ -1,0 +1,9 @@
+.antlr
+.vscode
+build
+generated
+*.g4
+*.interp
+*.tokens
+!TryCatchGrammar.g4
+*.exe

@@ -1,0 +1,17 @@
+try {
+    print("Hello");
+    print(125);
+    
+    try {
+        print("world");
+        throw new E( "123 error" );
+    } catch (E e) {
+        print("Handled");
+    } catch (E2 e2) {
+        throw e2;
+    };
+
+    throw new Exc("Bad");
+} catch ( Exc e ) {
+    print("Hanfled");
+}
