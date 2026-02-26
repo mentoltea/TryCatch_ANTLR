@@ -39,13 +39,13 @@ $(BUILD_DIR)/main.o: $(SRC_DIR)/main.cpp
 generate: grammar $(BUILD_DIR)/TryCatchGrammarBaseListener.o $(BUILD_DIR)/TryCatchGrammarListener.o $(BUILD_DIR)/TryCatchGrammarLexer.o $(BUILD_DIR)/TryCatchGrammarParser.o
 
 $(BUILD_DIR)/TryCatchGrammarBaseListener.o: $(ANTLR4_GENERATED)/TryCatchGrammarBaseListener.cpp
-	g++ -c -I$(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarBaseListener.cpp -o $(BUILD_DIR)/TryCatchGrammarBaseListener.o
+	g++ -c $(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarBaseListener.cpp -o $(BUILD_DIR)/TryCatchGrammarBaseListener.o
 $(BUILD_DIR)/TryCatchGrammarLexer.o: $(ANTLR4_GENERATED)/TryCatchGrammarLexer.cpp
-	g++ -c -I$(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarLexer.cpp -o $(BUILD_DIR)/TryCatchGrammarLexer.o
+	g++ -c $(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarLexer.cpp -o $(BUILD_DIR)/TryCatchGrammarLexer.o
 $(BUILD_DIR)/TryCatchGrammarParser.o: $(ANTLR4_GENERATED)/TryCatchGrammarParser.cpp
-	g++ -c -I$(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarParser.cpp -o $(BUILD_DIR)/TryCatchGrammarParser.o
+	g++ -c $(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarParser.cpp -o $(BUILD_DIR)/TryCatchGrammarParser.o
 $(BUILD_DIR)/TryCatchGrammarListener.o: $(ANTLR4_GENERATED)/TryCatchGrammarListener.cpp
-	g++ -c -I$(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarListener.cpp -o $(BUILD_DIR)/TryCatchGrammarListener.o
+	g++ -c $(CXX_FLAGS) $(ANTLR4_GENERATED)/TryCatchGrammarListener.cpp -o $(BUILD_DIR)/TryCatchGrammarListener.o
 
 link: main.exe
 

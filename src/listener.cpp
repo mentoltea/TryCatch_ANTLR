@@ -1,16 +1,9 @@
 #include "listener.h"
 
-
-void MyListener::enterProg(TryCatchGrammarParser::ProgContext *ctx) {
-}
-
 void MyListener::exitProg(TryCatchGrammarParser::ProgContext *ctx) {
     this->ast = (AST::TryCatchBlock*) state.stack.top();
     state.stack.pop();
     assert(state.stack.size() == 0);
-}
-
-void MyListener::enterTryCatchBlock(TryCatchGrammarParser::TryCatchBlockContext *ctx) {
 }
 
 void MyListener::exitTryCatchBlock(TryCatchGrammarParser::TryCatchBlockContext *ctx) {
@@ -37,9 +30,6 @@ void MyListener::exitTryCatchBlock(TryCatchGrammarParser::TryCatchBlockContext *
     state.stack.push(tcb);
 }
 
-void MyListener::enterTryBlock(TryCatchGrammarParser::TryBlockContext *ctx) {
-}
-
 void MyListener::exitTryBlock(TryCatchGrammarParser::TryBlockContext *ctx) {
     AST::TryBlock *tb = new AST::TryBlock;
     
@@ -47,9 +37,6 @@ void MyListener::exitTryBlock(TryCatchGrammarParser::TryBlockContext *ctx) {
     state.stack.pop();
 
     state.stack.push(tb);
-}
-
-void MyListener::enterCatchBlock(TryCatchGrammarParser::CatchBlockContext *ctx) {
 }
 
 void MyListener::exitCatchBlock(TryCatchGrammarParser::CatchBlockContext *ctx) {
@@ -61,9 +48,6 @@ void MyListener::exitCatchBlock(TryCatchGrammarParser::CatchBlockContext *ctx) {
     state.stack.pop();
 
     state.stack.push(cb);
-}
-
-void MyListener::enterBlock(TryCatchGrammarParser::BlockContext *ctx) {
 }
 
 void MyListener::exitBlock(TryCatchGrammarParser::BlockContext *ctx) {
@@ -86,13 +70,7 @@ void MyListener::exitBlock(TryCatchGrammarParser::BlockContext *ctx) {
     state.stack.push(block);
 }
 
-void MyListener::enterStatement(TryCatchGrammarParser::StatementContext *ctx) {
-}
-
 void MyListener::exitStatement(TryCatchGrammarParser::StatementContext *ctx) {
-}
-
-void MyListener::enterTryCatchBlockStatement(TryCatchGrammarParser::TryCatchBlockStatementContext *ctx) {
 }
 
 void MyListener::exitTryCatchBlockStatement(TryCatchGrammarParser::TryCatchBlockStatementContext *ctx) {
@@ -103,8 +81,6 @@ void MyListener::exitTryCatchBlockStatement(TryCatchGrammarParser::TryCatchBlock
     state.stack.push(st);
 }
 
-void MyListener::enterThrowStatement(TryCatchGrammarParser::ThrowStatementContext *ctx) {
-}
 
 void MyListener::exitThrowStatement(TryCatchGrammarParser::ThrowStatementContext *ctx) {
     AST::ThrowStatement *st = new AST::ThrowStatement;
@@ -112,9 +88,6 @@ void MyListener::exitThrowStatement(TryCatchGrammarParser::ThrowStatementContext
     st->exception = (AST::Exception*) state.stack.top();
     state.stack.pop();
     state.stack.push(st);
-}
-
-void MyListener::enterException_(TryCatchGrammarParser::Exception_Context *ctx) {
 }
 
 void MyListener::exitException_(TryCatchGrammarParser::Exception_Context *ctx) {
@@ -139,8 +112,6 @@ void MyListener::exitException_(TryCatchGrammarParser::Exception_Context *ctx) {
     state.stack.push(exc);
 }
 
-void MyListener::enterPrintStatement(TryCatchGrammarParser::PrintStatementContext *ctx) {
-}
 void MyListener::exitPrintStatement(TryCatchGrammarParser::PrintStatementContext *ctx) {
     auto *st = new AST::PrintStatement;
     st->type = AST::Statement::PRINT;
@@ -151,9 +122,6 @@ void MyListener::exitPrintStatement(TryCatchGrammarParser::PrintStatementContext
     st->argument = expr;
 
     state.stack.push(st);
-}
-
-void MyListener::enterExpression(TryCatchGrammarParser::ExpressionContext *ctx) {
 }
 
 void MyListener::exitExpression(TryCatchGrammarParser::ExpressionContext *ctx) {
